@@ -22,6 +22,8 @@
 
 #define MAX_VERTICES 20 // Max vertices in a graph is 20
 #define MAX_ID_LENGTH 9 // Max ID length is 8, +1 to account for null
+#define MAX_CHAR_LENGTH 31 //30 + 1 to account for null byte
+typedef char str30[MAX_CHAR_LENGTH];
 
 struct graphTag{
     int nVertices;                                  // Number of vertices in a graph
@@ -31,6 +33,13 @@ struct graphTag{
     
 };
 
+typedef struct graphTag graphType;
+
+void kuninInput(str30 inputFilename, graphType *graph);
+void unangOutput(str30 inputFilename, str30 outputFilename, graphType *graph);
+void ikalawangOutput(str30 outputFilename, graphType *graph);
+void ikatlongOutput(str30 outputFilename, graphType *graph);
+void ikaapatNaOutput(str30 outputFilename, graphType *graph);
 
 /*
 HAS: 
