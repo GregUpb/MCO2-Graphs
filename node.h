@@ -28,29 +28,28 @@
 
     Function definitions should be encoded in your C source file only!
 */
-#ifndef STACKH
-#define STACKH
-#include "node.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-// you may include other header files
+#define MAXSTACKSIZE 32768
 
-struct stackTag {
+typedef char string[512];
 
-    string name;              // name of the stack
-    struct node *Head;        // the top node
-    int count;
+/* Single Linked List */
+struct node
+{
+
+    string id;             // The value
+    struct node *previous;      // A pointer to the previous node
 
 };
 
-typedef struct stackTag stackType;
-  
-stackType CREATESTACK(char name[]);
-void PUSHSTACK(stackType *stack, string elem);
-char* POPSTACK(stackType *stack);
-char* TOPSTACK(stackType *stack);
-int ISFULLSTACK(stackType *stack);
-int ISEMPTYSTACK(stackType *stack);
-char* NEXTTOTOPSTACK(stackType *stack);
-void FREESTACK(stackType *stack);
+/* Multiple Linked List */
+struct multinode
+{
 
-#endif
+    string name;
+    struct multinode *linkednode[10];
+
+};
