@@ -32,7 +32,7 @@
     e. Return: stack
     f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
 */
-stackType CREATE(char name[])
+stackType CREATESTACK(char name[])
 {
     // Initialize a new stack
     stackType stack;
@@ -56,9 +56,9 @@ stackType CREATE(char name[])
     d. Purpose: This function will insert a new node at the top of the stack and increment the addition
     e. Return: None
     f. Parameters: stack is a pointer to the stackType structure, enabling the modifications to be saved in the structure.
-    -> elem is a pointType structure that represents the date of the node that is being added to the stack.
+    -> elem is a string structure that represents the date of the node that is being added to the stack.
 */
-void PUSH(stackType *stack, pointType elem)
+void PUSHSTACK(stackType *stack, string elem)
 {
     // Initialize a new node
     struct node *newNode;
@@ -66,15 +66,15 @@ void PUSH(stackType *stack, pointType elem)
     // Check if count is 0, less than MAX (32768), or above or equal to MAX (32768)
     if (stack->count == 0)
     {
-        // Set the value to the head
-        stack->Head->value = elem;
+        // Set the id to the head
+        strcpy(stack->Head->id, elem);
         stack->count += 1;
 
-    } else if (stack->count < MAXSTACKSIZE)
+    } else if (stack->count < MAXSIZE)
     {
         newNode = malloc(sizeof(struct node));  // Allocate memory to the new node
     
-        newNode->value = elem;  // Set the value to the new node
+        strcpy(newNode->id, elem);  // Set the id to the new node
     
         newNode->previous = stack->Head;    // Set the previous pointer to the head
     
@@ -93,16 +93,16 @@ void PUSH(stackType *stack, pointType elem)
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will take the previous node, delete the current head, and replace it as the new head of the stack, decrementing 
-    e. Return: value
+    e. Return: id
     f. Parameters: stack is a pointer to the stackType structure, enabling the modifications to be saved in the structure.
 */
-pointType POP(stackType *stack)
+char *POPSTACK(stackType *stack)
 {
-    pointType value;
+    string id;
     struct node *temp = stack->Head->previous;  // Make a temporary node and make it the previous pointer of the head
 
-    // Get the value of the current head
-    value = stack->Head->value;
+    // Get the id of the current head
+    strcpy(id, stack->Head->id);
 
     // Remove the head
     free(stack->Head);
@@ -111,22 +111,21 @@ pointType POP(stackType *stack)
     // Set the previous pointer as the new head
     stack->Head = temp;
 
-    return value;
-
+    return id;
 }
 
 /*
     a. Name of Programmer(s):  John Hayden R. Acosta
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: This function will return the value of the head, a.k.a the top element of the stack
-    e. Return: stack->Head->value // the value of the current head of the stack
+    d. Purpose: This function will return the id of the head, a.k.a the top element of the stack
+    e. Return: stack->Head->id // the id of the current head of the stack
     f. Parameters: stack is a pointer to the stackType structure, using previously saved modifications in the structure.
 */
-pointType TOP(stackType *stack)
+char *TOPSTACK(stackType *stack)
 {
-    // Only returns the value of the head
-    return stack->Head->value;
+    // Only returns the id of the head
+    return stack->Head->id;
 
 }
 
@@ -138,13 +137,13 @@ pointType TOP(stackType *stack)
     e. Return: isFull
     f. Parameters: stack is a pointer to the stackType structure, using previously saved modifications in the structure.
 */
-int ISFULL(stackType *stack)
+int ISFULLSTACK(stackType *stack)
 {
 
     int isFull;
 
     // Checks if the stack is full or not
-    if (stack->count == MAXSTACKSIZE)
+    if (stack->count == MAXSIZE)
     {
         isFull = 1;
     } else
@@ -164,7 +163,7 @@ int ISFULL(stackType *stack)
     e. Return: isEmpty
     f. Parameters: stack is a pointer to the stackType structure, using previously saved modifications in the structure.
 */
-int ISEMPTY(stackType *stack)
+int ISEMPTYSTACK(stackType *stack)
 {
 
     int isEmpty;
@@ -186,14 +185,14 @@ int ISEMPTY(stackType *stack)
     a. Name of Programmer(s):  John Hayden R. Acosta
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: This function will return the value of the node that is next to the head node (2nd one from the top).
-    e. Return: stack->Head->previous->value // the value of the node after the current head in the stack
+    d. Purpose: This function will return the id of the node that is next to the head node (2nd one from the top).
+    e. Return: stack->Head->previous->id // the id of the node after the current head in the stack
     f. Parameters: stack is a pointer to the stackType structure, using previously saved modifications in the structure.
 */
-pointType NEXTTOTOP(stackType *stack)
+char *NEXTTOTOPSTACK(stackType *stack)
 {
-    // Returns the value next to the top;
-    return stack->Head->previous->value;
+    // Returns the id next to the top;
+    return stack->Head->previous->id;
 }
 
 /*
