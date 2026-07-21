@@ -31,10 +31,10 @@ struct QueueTag {
 typedef struct QueueTag QueueType;
   
 QueueType CREATEQUEUE(char name[]);
-void PUSHQUEUE(QueueType *queue, string elem);
-char* POPQUEUE(QueueType *queue);
-char* TOPQUEUE(QueueType *queue);
+void ENQUEUE(QueueType *queue, string elem);
+char* DEQUEUE(QueueType *queue);
+char* HEADQUEUE(QueueType *queue);
+char* TAILQUEUE(QueueType *queue);
 int ISFULLQUEUE(QueueType *queue);
 int ISEMPTYQUEUE(QueueType *queue);
-char* NEXTTOTOPQUEUE(QueueType *queue);
 void FREEQUEUE(QueueType *queue);
