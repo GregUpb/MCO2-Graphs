@@ -17,6 +17,9 @@
     4. Do NOT use return in a void function!
 
 */
+#ifndef GRAPH_H
+#define GRAPH_H
+
 #include <stdio.h>
 #include <string.h>
 
@@ -34,6 +37,7 @@ struct graphTag{
 };
 
 typedef struct graphTag graphType;
+typedef char list[MAX_VERTICES][MAX_ID_LENGTH];
 
 void kuninInput(str30 inputFilename, graphType *graph);
 void unangOutput(str30 inputFilename, str30 outputFilename, graphType *graph);
@@ -49,3 +53,5 @@ HAS:
 - Function for Output #3 (Adjacency List Visualization)
 - Function for Output #4 (Adjacency Matrix Visualization)
 */
+
+#endif

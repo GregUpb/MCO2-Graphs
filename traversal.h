@@ -17,9 +17,16 @@
     4. Do NOT use return in a void function!
 
 */
+#ifndef TRAVERSAL_H
+#define TRAVERSAL_H
 
-/*
-HAS: 
-- Function for Output #5 (BFS Traversal Sequence)
-- Function for Output #6 (DFS Traversal Sequence)
-*/
+#include "graph.h"
+#include "dataStruct.h"
+
+
+int getIndex(graphType graph, int num);
+int getVertexIndex(graphType graph, char id[]);
+int isPresent(char ID[], list dfsList, int vertexListed);
+void dfs(graphType graph, list result);
+
+#endif

@@ -28,28 +28,65 @@
 
     Function definitions should be encoded in your C source file only!
 */
+#ifndef DATASTRUCT_H
+#define DATASTRUCT_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+// you may include other header files
 
-#define MAXSTACKSIZE 32768
+#define MAXSIZE 32768
 
-typedef char string[512];
+typedef char string[10];
 
 /* Single Linked List */
 struct node
 {
 
-    string id;             // The value
+    string id;                  // The value
     struct node *previous;      // A pointer to the previous node
 
 };
 
-/* Multiple Linked List */
-struct multinode
-{
 
-    string name;
-    struct multinode *linkednode[10];
+struct stackTag {
+
+    string name;              // name of the stack
+    struct node *Head;        // the top node
+    int count;
 
 };
+
+typedef struct stackTag stackType;
+
+struct QueueTag {
+
+    string name;                    // name of the stack
+    struct node *Head;        // the first node
+    struct node *Tail;        // the last node
+    int count;
+
+};
+
+typedef struct QueueTag QueueType;
+  
+stackType CREATESTACK(char name[]);
+void PUSHSTACK(stackType *stack, string elem);
+void POPSTACK(stackType *stack, string id);
+void TOPSTACK(stackType *stack, string id);
+int ISFULLSTACK(stackType *stack);
+int ISEMPTYSTACK(stackType *stack);
+void NEXTTOTOPSTACK(stackType *stack, string id);
+void FREESTACK(stackType *stack);
+
+QueueType CREATEQUEUE(char name[]);
+void ENQUEUE(QueueType *queue, string elem);
+void DEQUEUE(QueueType *queue, string id);
+void HEADQUEUE(QueueType *queue, string id);
+void TAILQUEUE(QueueType *queue, string id);
+int ISFULLQUEUE(QueueType *queue);
+int ISEMPTYQUEUE(QueueType *queue);
+void FREEQUEUE(QueueType *queue);
+
+#endif
