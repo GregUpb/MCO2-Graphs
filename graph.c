@@ -83,7 +83,8 @@ void kuninInput(str30 inputFilename, graphType *graph)
         {
             for (j = 0; j < adjCount[i]; j++) 
             {
-                char adjName[MAX_CHAR_LENGTH] = tempAdj[i][j];
+                char adjName[MAX_CHAR_LENGTH];
+                strcpy(adjName, tempAdj[i][j]);
                 
                 // Find the integer index of the adjacent vertex
                 int adjId = -1;
