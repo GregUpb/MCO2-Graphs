@@ -24,5 +24,53 @@
 
 int main()
 {
-    
+    graphType graph;
+    list result;
+
+    graph.nVertices = 6;
+
+    // Deliberately NOT alphabetically ordered
+    strcpy(graph.vertexNames[0], "B");
+    strcpy(graph.vertexNames[1], "F");
+    strcpy(graph.vertexNames[2], "A");
+    strcpy(graph.vertexNames[3], "E");
+    strcpy(graph.vertexNames[4], "D");
+    strcpy(graph.vertexNames[5], "C");
+
+    // Initialize matrix to 0
+    for (int i = 0; i < graph.nVertices; i++)
+    {
+        for (int j = 0; j < graph.nVertices; j++)
+        {
+            graph.matrix[i][j] = 0;
+        }
+    }
+
+    // Get indices
+    int A = getVertexIndex(graph, "A");
+    int B = getVertexIndex(graph, "B");
+    int C = getVertexIndex(graph, "C");
+    int D = getVertexIndex(graph, "D");
+    int E = getVertexIndex(graph, "E");
+    int F = getVertexIndex(graph, "F");
+
+    // Undirected graph
+    graph.matrix[A][B] = graph.matrix[B][A] = 1;
+    graph.matrix[A][C] = graph.matrix[C][A] = 1;
+    graph.matrix[B][D] = graph.matrix[D][B] = 1;
+    graph.matrix[B][E] = graph.matrix[E][B] = 1;
+    graph.matrix[C][F] = graph.matrix[F][C] = 1;
+
+    dfs(graph, result);
+
+    printf("DFS Result:\n");
+
+    for (int i = 0; i < graph.nVertices; i++)
+    {
+        printf("%s ", result[i]);
+    }
+
+    printf("\n");
+
+    return 0;
 }

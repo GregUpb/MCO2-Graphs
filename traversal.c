@@ -108,6 +108,7 @@ int isPresent(char ID[], list dfsList, int vertexListed)
 
 void dfs(graphType graph, list result)
 {
+    int visitedCount = 0;
     int resultCount = 0;
     int next;
     int found = 0;
