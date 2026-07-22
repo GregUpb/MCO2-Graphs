@@ -384,8 +384,8 @@ void ikaapatNaOutput(str30 outputFilename, graphType *graph)
 /*
 HAS: 
 - GetInput Function from .txt DONE
-- Function for Output #1 (Vertices & Edges)
-- Function for Output #2 (Vertices with Degrees)
-- Function for Output #3 (Adjacency List Visualization)
-- Function for Output #4 (Adjacency Matrix Visualization)
+- Function for Output #1 (Vertices & Edges) DONE
+- Function for Output #2 (Vertices with Degrees) DONE
+- Function for Output #3 (Adjacency List Visualization) DONE
+- Function for Output #4 (Adjacency Matrix Visualization) DONE  
 */
