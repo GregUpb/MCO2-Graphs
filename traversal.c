@@ -65,6 +65,7 @@ int getIndex(graphType graph, int num)
             index = i;
             found = 1;
         }
+        i++;
     }
 
     return index;
@@ -83,6 +84,8 @@ int getVertexIndex(graphType graph, char id[])
             index = i;
             found = 1;
         }
+
+        i++;
     }
 
     return index;
@@ -105,7 +108,6 @@ int isPresent(char ID[], list dfsList, int vertexListed)
 
 void dfs(graphType graph, list result)
 {
-    int visitedCount = 0;
     int resultCount = 0;
     int next;
     int found = 0;
@@ -130,7 +132,10 @@ void dfs(graphType graph, list result)
             if (strcmp(graph.vertexNames[i], temp) == 0)
             {
                 x = i;
+                found = 1;
             }
+
+            i++;
         }
 
         // Visit the vertex if it hasn't been visited yet
@@ -167,6 +172,55 @@ void dfs(graphType graph, list result)
         }
     }
 
-
+    // Clean the stack
     FREESTACK(&stack);
+}
+
+void bfs(graphType graph, list result)
+{
+    int resultCount = 0;
+    int next = 0;
+    int found = 0;
+    int i, j, x;
+    string temp;
+
+    QueueType queue;
+    queue = CREATEQUEUE("queue");
+
+    // Push the lowest id
+    ENQUEUE(&queue, graph.vertexNames[getIndex(graph, 0)]);
+
+    while (!ISEMPTYQUEUE(&queue))
+    {
+        // Get the front vertex
+        DEQUEUE(&queue, temp);
+
+        // Skip if already visited
+        if (!(isPresent(temp, result, resultCount)))
+        {
+            strcpy(result[resultCount], temp);
+            resultCount++;
+
+            // Convert ID to matrix index
+            x = getVertexIndex(graph, temp);
+
+            // Visit neighbors in alphabetical order
+            for (int j = 0; j < graph.nVertices; j++)
+            {
+                next = getIndex(graph, j);
+
+                if (graph.matrix[x][next] == 1)
+                {
+                    if (!isPresent(graph.vertexNames[next], result, resultCount))
+                    {
+                        ENQUEUE(&queue, graph.vertexNames[next]);
+                    }
+                }
+            }
+        }
+        
+    }
+
+    // Clean the stack
+    FREEQUEUE(&queue);
 }

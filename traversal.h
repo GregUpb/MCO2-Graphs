@@ -23,10 +23,10 @@
 #include "graph.h"
 #include "dataStruct.h"
 
-
 int getIndex(graphType graph, int num);
 int getVertexIndex(graphType graph, char id[]);
 int isPresent(char ID[], list dfsList, int vertexListed);
 void dfs(graphType graph, list result);
+void bfs(graphType graph, list result);
 
 #endif
