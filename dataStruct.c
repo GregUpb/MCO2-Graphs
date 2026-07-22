@@ -276,6 +276,8 @@ void DEQUEUE(QueueType *queue, string id)
     {
         // If count is exactly one, dont remove the allocated node
         queue->count -= 1;
+        strcpy(id, queue->Head->id);
+        
     } else if (queue->count > 0)
     {
         // Create a temporary node
