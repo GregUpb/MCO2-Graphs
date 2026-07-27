@@ -106,9 +106,8 @@ int isPresent(char ID[], list dfsList, int vertexListed)
     return isPresent;
 }
 
-void dfs(graphType graph, list result)
+void dfs(graphType graph, list result, char startVertex[], int *finalCount)
 {
-    int visitedCount = 0;
     int resultCount = 0;
     int next;
     int found = 0;
@@ -118,12 +117,11 @@ void dfs(graphType graph, list result)
     stackType stack;
     stack = CREATESTACK("stack");
 
-    // Push the lowest id
-    PUSHSTACK(&stack, graph.vertexNames[getIndex(graph, 0)]);
+    // Push the user-specified START VERTEX 
+    PUSHSTACK(&stack, startVertex);
 
     while (!ISEMPTYSTACK(&stack))
     {
-
         i = 0;
         found = 0;
         // Loop until we have the index
@@ -135,7 +133,6 @@ void dfs(graphType graph, list result)
                 x = i;
                 found = 1;
             }
-
             i++;
         }
 
@@ -162,7 +159,6 @@ void dfs(graphType graph, list result)
                     found = 1;
                 }
             }
-
             j++;
         }
 
@@ -173,23 +169,22 @@ void dfs(graphType graph, list result)
         }
     }
 
-    // Clean the stack
     FREESTACK(&stack);
+    *finalCount = resultCount; // Pass the count back to the output function
 }
 
-void bfs(graphType graph, list result)
+void bfs(graphType graph, list result, char startVertex[], int *finalCount)
 {
     int resultCount = 0;
     int next = 0;
-    int found = 0;
     int i, j, x;
     string temp;
 
     QueueType queue;
     queue = CREATEQUEUE("queue");
 
-    // Push the lowest id
-    ENQUEUE(&queue, graph.vertexNames[getIndex(graph, 0)]);
+    // Enqueue the user-specified START VERTEX 
+    ENQUEUE(&queue, startVertex);
 
     while (!ISEMPTYQUEUE(&queue))
     {
@@ -206,7 +201,7 @@ void bfs(graphType graph, list result)
             x = getVertexIndex(graph, temp);
 
             // Visit neighbors in alphabetical order
-            for (int j = 0; j < graph.nVertices; j++)
+            for (j = 0; j < graph.nVertices; j++)
             {
                 next = getIndex(graph, j);
 
@@ -219,9 +214,100 @@ void bfs(graphType graph, list result)
                 }
             }
         }
-        
     }
 
-    // Clean the stack
     FREEQUEUE(&queue);
+    *finalCount = resultCount; // Pass the count back to the output function
+}
+
+/*
+    a. Name of Programmer(s):  Jacob Miguel P. Gregorio
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: To output the BFS traversal sequence to a text file.
+    e. Return: ala talaga pre
+    f. Parameters: outputFilename for the destination file, graph for the graph data, startVertex for the origin
+*/
+void ikalimangOutput(str30 outputFilename, graphType *graph, char startVertex[])
+{
+    FILE *fp;
+
+    if (graph->nVertices > 0)
+    {
+        if (fp = fopen(outputFilename, "w"))
+        {
+            list result;
+            int resultCount = 0;
+            int i;
+
+            // Call the BFS function with the start vertex
+            bfs(*graph, result, startVertex, &resultCount);
+
+            // Prints the sequence with spaces for every vertex
+            for (i = 0; i < resultCount; i++)
+            {
+                fprintf(fp, "%s", result[i]);
+                
+                // Add a space after every vertex EXCEPT the last vertex
+                if (i < resultCount - 1)
+                {
+                    fprintf(fp, " ");
+                }
+            }
+            fprintf(fp, "\n");
+
+            fclose(fp);
+            printf("Successfully generated Output 5 in %s!\n", outputFilename);
+        }
+        else
+        {
+            printf("Output 5: Could not open %s\n", outputFilename);
+        }
+    }
+}
+
+/*
+    a. Name of Programmer(s):  Jacob Miguel P. Gregorio
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: To output the DFS traversal sequence to a text file.
+    e. Return: ala talaga pre
+    f. Parameters: outputFilename for the destination file, graph for the graph data, startVertex for the origin
+*/
+void ikaanimNaOutput(str30 outputFilename, graphType *graph, char startVertex[])
+{
+    FILE *fp;
+
+    if (graph->nVertices > 0)
+    {
+        if (fp = fopen(outputFilename, "w"))
+        {
+            list result;
+            int resultCount = 0;
+            int i;
+
+            // Call the DFS function with the start vertex
+            dfs(*graph, result, startVertex, &resultCount);
+
+            // Prints the sequence with spaces for every vertex
+            for (i = 0; i < resultCount; i++)
+            {
+                fprintf(fp, "%s", result[i]);
+                
+                // Add a space after every vertex EXCEPT the last vertex
+                if (i < resultCount - 1)
+                {
+                    fprintf(fp, " ");
+                }
+            }
+            fprintf(fp, "\n");
+
+            fclose(fp);
+            printf("Successfully generated Output 6 in %s!\n", outputFilename);
+        }
+        else
+        {
+            printf("Output 6: Could not open %s\n", outputFilename);
+        }
+    }
 }

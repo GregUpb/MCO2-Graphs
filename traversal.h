@@ -26,7 +26,8 @@
 int getIndex(graphType graph, int num);
 int getVertexIndex(graphType graph, char id[]);
 int isPresent(char ID[], list dfsList, int vertexListed);
-void dfs(graphType graph, list result);
-void bfs(graphType graph, list result);
-
+void dfs(graphType graph, list result, char startVertex[], int *finalCount);
+void bfs(graphType graph, list result, char startVertex[], int *finalCount);
+void ikalimangOutput(str30 outputFilename, graphType *graph, char startVertex[]);
+void ikaanimNaOutput(str30 outputFilename, graphType *graph, char startVertex[]);
 #endif
