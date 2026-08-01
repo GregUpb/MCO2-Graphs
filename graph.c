@@ -24,9 +24,10 @@
     a. Name of Programmer(s):  Jacob Miguel P. Gregorio
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: blank
-    e. Return: ala talaga pre
-    f. Parameters: ala
+    d. Purpose: Opens a text file and reads the info inside, storing all the data and mapping out the matrix.
+    e. Return: None (void)
+    f. Parameters: inputFilename - a string that contains the filename based on the input text file.
+    Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
 */
 void kuninInput(str30 inputFilename, graphType *graph)
 {
@@ -113,9 +114,10 @@ void kuninInput(str30 inputFilename, graphType *graph)
     a. Name of Programmer(s):  Jacob Miguel P. Gregorio
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: blank
-    e. Return: ala talaga pre
-    f. Parameters: ala
+    d. Purpose: Creates a new text file to store output #1 which contains the set of vertices and edges
+    e. Return: None (void)
+    f. Parameters: inputFilename - a string that contains the filename based on the input text file.
+    `
 */
 void unangOutput(str30 inputFilename, str30 outputFilename, graphType *graph)
 {
@@ -207,9 +209,10 @@ void unangOutput(str30 inputFilename, str30 outputFilename, graphType *graph)
     a. Name of Programmer(s):  Jacob Miguel P. Gregorio
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: blank
-    e. Return: ala talaga pre
-    f. Parameters: ala
+    d. Purpose: Creates a new text file to store output #2 which contains the list of vertex
+    e. Return: None (Void)
+    f. Parameters:outputFilename - a string that contains the filename for where the new output will be written
+    Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
 */
 void ikalawangOutput(str30 outputFilename, graphType *graph)
 {
@@ -282,9 +285,10 @@ void ikalawangOutput(str30 outputFilename, graphType *graph)
     a. Name of Programmer(s):  Jacob Miguel P. Gregorio
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: blank
-    e. Return: ala talaga pre
-    f. Parameters: ala
+    d. Purpose: Creates a new text file to store output #3 which contains the adjacency list representation of the graph
+    e. Return: None (Void)
+    f. Parameters:outputFilename - a string that contains the filename for where the new output will be written
+    Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
 */
 void ikatlongOutput(str30 outputFilename, graphType *graph)
 {
@@ -330,9 +334,10 @@ void ikatlongOutput(str30 outputFilename, graphType *graph)
     a. Name of Programmer(s):  Jacob Miguel P. Gregorio
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: blank
-    e. Return: ala talaga pre
-    f. Parameters: ala
+    d. Purpose: Creates a new text file to store output #4 which contains the adjacency matrix representation of the graph
+    e. Return: None (Void)
+    f. Parameters:outputFilename - a string that contains the filename for where the new output will be written
+    Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
 */
 void ikaapatNaOutput(str30 outputFilename, graphType *graph)
 {

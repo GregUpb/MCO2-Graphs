@@ -1,6 +1,5 @@
 *.pdf
 *.exe
-*.txt
 testmain.c
 
 ~*.docx
