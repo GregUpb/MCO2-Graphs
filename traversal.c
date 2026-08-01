@@ -22,9 +22,10 @@
     a. Name of Programmer(s):  John Hayden R. Acosta
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: This function will create a brand new empty stack, ready to use and complete with proper memory allocation
-    e. Return: stack
-    f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
+    d. Purpose: Sorts the graph's vertices alphabetically and returns the original matrix index of the vertex found at the proper alphabetical position
+    e. Return: index
+    f. Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
+    Parameters: num - an integer used to compare the names of the vertex alphabetically
 */
 #include "traversal.h"
 
@@ -72,6 +73,16 @@ int getIndex(graphType graph, int num)
 
 }
 
+/*
+   a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: Searches for the vertex ID and returns the index where the vertex is found
+    e. Return: index
+    f. Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
+    Parameters: id - Array of characters that acts as a string that represents the vertex name to be searched for
+*/
+
 int getVertexIndex(graphType graph, char id[])
 {
     int index;
@@ -91,6 +102,17 @@ int getVertexIndex(graphType graph, char id[])
     return index;
 }
 
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: Checks if the given vertex ID exists to avoid duplicated visits
+    e. Return: isPresent (1 means it is present, 0 means it is not)
+    f. Parameters: ID - Array of characters that acts as a string that represents the vertex name to be searched for
+    Parameters: dfsList - a 2D character array that contains the recorded vertices
+    Parameters: vertexListed - an integer that represents the amount of vertices stored
+*/
+
 int isPresent(char ID[], list dfsList, int vertexListed)
 {
     int isPresent = 0;
@@ -105,6 +127,18 @@ int isPresent(char ID[], list dfsList, int vertexListed)
 
     return isPresent;
 }
+
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: Does the Depth First Search traversal starting on a given vertex.
+    e. Return: None (void)
+    f. Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
+    Parameters: result - a 2D character array that stores the final traversal sequence
+    Parameters: startVertex - an array of characters that represent the starting node of the traversal
+    Parameters: finalCount - a pointer to an integer that passes the number of visited vertices
+*/
 
 void dfs(graphType graph, list result, char startVertex[], int *finalCount)
 {
@@ -173,6 +207,18 @@ void dfs(graphType graph, list result, char startVertex[], int *finalCount)
     *finalCount = resultCount; // Pass the count back to the output function
 }
 
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: Does the Breadth First Search traversal starting on a given vertex.
+    e. Return: None (void)
+    f. Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
+    Parameters: result - a 2D character array that stores the final traversal sequence
+    Parameters: startVertex - an array of characters that represent the starting node of the traversal
+    Parameters: finalCount - a pointer to an integer that passes the number of visited vertices
+*/
+
 void bfs(graphType graph, list result, char startVertex[], int *finalCount)
 {
     int resultCount = 0;
@@ -224,9 +270,11 @@ void bfs(graphType graph, list result, char startVertex[], int *finalCount)
     a. Name of Programmer(s):  Jacob Miguel P. Gregorio
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: To output the BFS traversal sequence to a text file.
-    e. Return: ala talaga pre
-    f. Parameters: outputFilename for the destination file, graph for the graph data, startVertex for the origin
+    d. Purpose: Executes a BFS traversal then writes the result to output #5
+    e. Return: None (void)
+    f. Parameters: outputFilename - a string that contains the filename for where the new output will be written
+    Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
+    Parameters: startVertex - a string that represents the origin vertex for the traversal
 */
 void ikalimangOutput(str30 outputFilename, graphType *graph, char startVertex[])
 {
@@ -270,9 +318,11 @@ void ikalimangOutput(str30 outputFilename, graphType *graph, char startVertex[])
     a. Name of Programmer(s):  Jacob Miguel P. Gregorio
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: To output the DFS traversal sequence to a text file.
-    e. Return: ala talaga pre
-    f. Parameters: outputFilename for the destination file, graph for the graph data, startVertex for the origin
+    d. Purpose: Executes a DFS traversal then writes the result to output #6
+    e. Return: None (void)
+    f. Parameters: outputFilename - a string that contains the filename for where the new output will be written
+    Parameters: graph - a pointer directed to data struct type of graphTag which contains info about the vertices and the matrix.
+    Parameters: startVertex - a string that represents the origin vertex for the traversal
 */
 void ikaanimNaOutput(str30 outputFilename, graphType *graph, char startVertex[])
 {

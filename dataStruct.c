@@ -93,8 +93,9 @@ void PUSHSTACK(stackType *stack, string elem)
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will take the previous node, delete the current head, and replace it as the new head of the stack, decrementing 
-    e. Return: id
+    e. Return: None (void)
     f. Parameters: stack is a pointer to the stackType structure, enabling the modifications to be saved in the structure.
+    -> id is a string which contains the vertex ID for the traversal
 */
 void POPSTACK(stackType *stack, string id)
 {
@@ -116,9 +117,10 @@ void POPSTACK(stackType *stack, string id)
     a. Name of Programmer(s):  John Hayden R. Acosta
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: This function will return the id of the head, a.k.a the top element of the stack
-    e. Return: stack->Head->id // the id of the current head of the stack
+    d. Purpose: This function will get the id of the head, a.k.a the top element of the stack
+    e. Return: None (void)
     f. Parameters: stack is a pointer to the stackType structure, using previously saved modifications in the structure.
+    -> id is a string which contains the vertex ID for the traversal
 */
 void TOPSTACK(stackType *stack, string id)
 {
@@ -184,8 +186,9 @@ int ISEMPTYSTACK(stackType *stack)
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will return the id of the node that is next to the head node (2nd one from the top).
-    e. Return: stack->Head->previous->id // the id of the node after the current head in the stack
+    e. Return:
     f. Parameters: stack is a pointer to the stackType structure, using previously saved modifications in the structure.
+    -> id is a string which contains the vertex ID for the traversal
 */
 void NEXTTOTOPSTACK(stackType *stack, string id)
 {
@@ -216,8 +219,8 @@ void FREESTACK(stackType *stack)
     a. Name of Programmer(s):  John Hayden R. Acosta
     b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
     c. Code Type -- 100% Human Generated 
-    d. Purpose: This function will create a brand new empty stack, ready to use and complete with proper memory allocation
-    e. Return: stack
+    d. Purpose: This function will create a brand new empty queue, ready to use and complete with proper memory allocation
+    e. Return: None (void)
     f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
 */
 QueueType CREATEQUEUE(char name[])
@@ -238,7 +241,14 @@ QueueType CREATEQUEUE(char name[])
 
 }
 
-
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will insert a new node at the tail of the queue and increment the addition
+    e. Return: None (void)
+    f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
+*/
 
 void ENQUEUE(QueueType *queue, string elem)
 {
@@ -270,6 +280,15 @@ void ENQUEUE(QueueType *queue, string elem)
 
 }
 
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will remove the current head from the queue, and then decrementing
+    e. Return: None (void)
+    f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
+*/
+
 void DEQUEUE(QueueType *queue, string id)
 {
     if (queue->count == 1)
@@ -298,6 +317,14 @@ void DEQUEUE(QueueType *queue, string id)
 
 }
 
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will get the id of the head, a.k.a the first element in the queue
+    e. Return: None (void)
+    f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
+*/
 
 void HEADQUEUE(QueueType *queue, string id)
 {
@@ -313,6 +340,14 @@ void HEADQUEUE(QueueType *queue, string id)
 
 }
 
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will get the id of the tail, a.k.a the last element in the queue
+    e. Return: None (void)
+    f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
+*/
 
 void TAILQUEUE(QueueType *queue, string id)
 {
@@ -328,7 +363,14 @@ void TAILQUEUE(QueueType *queue, string id)
 
 }
 
-
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will check the count of the queue if it is full or not, and returns 1 if it is full, or 0 if it isn't.
+    e. Return: None (void)
+    f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
+*/
 
 int ISFULLQUEUE(QueueType *queue)
 {
@@ -346,7 +388,14 @@ int ISFULLQUEUE(QueueType *queue)
     return isFull;
 }
 
-
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will check the count of the queue if it is empty or not, and returns 1 if it is empty, or 0 if it isn't.
+    e. Return: None (void)
+    f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
+*/
 
 int ISEMPTYQUEUE(QueueType *queue)
 {
@@ -366,7 +415,14 @@ int ISEMPTYQUEUE(QueueType *queue)
 
 }
 
-
+/*
+    a. Name of Programmer(s):  John Hayden R. Acosta
+    b. Name of Tester(s)    :  Gabriel Angelo L. De Silva
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will remove all elements inside a stack, making it empty.
+    e. Return: None (void)
+    f. Parameters: name is an Array of characters that acts as a string to provide a name or a label for the new stack
+*/
 
 void FREEQUEUE(QueueType *queue)
 {
