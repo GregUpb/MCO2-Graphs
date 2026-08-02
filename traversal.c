@@ -158,7 +158,7 @@ void dfs(graphType graph, list result, char startVertex[], int *finalCount)
     {
         i = 0;
         found = 0;
-        // Loop until we have the index
+        // Loop until we have the index (from the lowest id)
         while (!(found) && i < graph.nVertices)
         {
             TOPSTACK(&stack, temp);
@@ -245,6 +245,8 @@ void bfs(graphType graph, list result, char startVertex[], int *finalCount)
 
             // Convert ID to matrix index
             x = getVertexIndex(graph, temp);
+
+            printf("%s", graph.vertexNames[x]);
 
             // Visit neighbors in alphabetical order
             for (j = 0; j < graph.nVertices; j++)
