@@ -223,7 +223,7 @@ void bfs(graphType graph, list result, char startVertex[], int *finalCount)
 {
     int resultCount = 0;
     int next = 0;
-    int i, j, x;
+    int j, x;
     string temp;
 
     QueueType queue;
@@ -282,7 +282,7 @@ void ikalimangOutput(str30 outputFilename, graphType *graph, char startVertex[])
 
     if (graph->nVertices > 0)
     {
-        if (fp = fopen(outputFilename, "w"))
+        if ((fp = fopen(outputFilename, "w")))
         {
             list result;
             int resultCount = 0;
@@ -330,7 +330,7 @@ void ikaanimNaOutput(str30 outputFilename, graphType *graph, char startVertex[])
 
     if (graph->nVertices > 0)
     {
-        if (fp = fopen(outputFilename, "w"))
+        if ((fp = fopen(outputFilename, "w")))
         {
             list result;
             int resultCount = 0;

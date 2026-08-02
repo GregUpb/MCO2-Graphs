@@ -29,10 +29,12 @@
 typedef char str30[MAX_CHAR_LENGTH];
 
 struct graphTag{
-    int nVertices;                                  // Number of vertices in a graph
-    char vertexNames[MAX_VERTICES][MAX_ID_LENGTH];  /*Array of vertex names that can store a maximum of 20 vertices 
-                                                    and a maximum of 8 characters pero vertex*/ 
-    int matrix[MAX_VERTICES][MAX_VERTICES];          //20x20 2D array that SHOULD contain 0s (walang edge) and 1s (may edge)
+    int nVertices;                                              // Number of vertices in a graph
+    char vertexNames[MAX_VERTICES][MAX_ID_LENGTH];              /*Array of vertex names that can store a maximum of 20 vertices 
+                                                                and a maximum of 8 characters pero vertex*/ 
+    int matrix[MAX_VERTICES][MAX_VERTICES];                     //20x20 2D array that SHOULD contain 0s (walang edge) and 1s (may edge)
+    char rawAdjList[MAX_VERTICES][MAX_VERTICES][MAX_ID_LENGTH]; //3D array to store inputs as is
+    int adjCount[MAX_VERTICES];                                 //Number of adjacent vertices for each vertex in the same order as vertexNames
     
 };
 

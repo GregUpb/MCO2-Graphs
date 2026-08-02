@@ -34,7 +34,7 @@ void kuninInput(str30 inputFilename, graphType *graph)
     FILE *fp;
     graph->nVertices = 0;
     // if opening file and read mode is sucessful, program will proceed. Otherwise it will return an error message
-    if (fp = fopen(inputFilename, "r"))
+    if ((fp = fopen(inputFilename, "r")))
     {   
         int i,j,k;
         
@@ -50,8 +50,10 @@ void kuninInput(str30 inputFilename, graphType *graph)
             }
         }
 
-        char tempAdj[MAX_VERTICES][MAX_VERTICES][MAX_ID_LENGTH]; // Stores a 20x20 matrix that each contains a string of max 8 chars (vertex id)
-        int adjCount[MAX_VERTICES] = {0}; // Tracks how many adjacent vertices each row has
+        for (i = 0; i < MAX_VERTICES; i++)
+        {
+            graph->adjCount[i] = 0;
+        }
 
         for (i = 0; i < graph->nVertices; i++) 
         {
@@ -69,8 +71,8 @@ void kuninInput(str30 inputFilename, graphType *graph)
             {
                 
                 // Stores vertex id into temporary adjacency list
-                strcpy(tempAdj[i][adjCount[i]], temp);
-                adjCount[i]++;
+                strcpy(graph->rawAdjList[i][graph->adjCount[i]], temp);
+                graph->adjCount[i]++;
                 
                 //Read string again before looping
                 fscanf(fp, "%s", temp);
@@ -82,10 +84,10 @@ void kuninInput(str30 inputFilename, graphType *graph)
         // Adjacency Matrix Mapping
         for (i = 0; i < graph->nVertices; i++) 
         {
-            for (j = 0; j < adjCount[i]; j++) 
+            for (j = 0; j < graph->adjCount[i]; j++) 
             {
                 char adjName[MAX_CHAR_LENGTH];
-                strcpy(adjName, tempAdj[i][j]);
+                strcpy(adjName, graph->rawAdjList[i][j]);
                 
                 // Find the integer index of the adjacent vertex
                 int adjId = -1;
@@ -102,7 +104,7 @@ void kuninInput(str30 inputFilename, graphType *graph)
                 }
             }
         }
-        printf("Sucessfully mapped vertices into the matrix!");
+        printf("Sucessfully mapped vertices into the matrix!\n");
     }
     else
     {
@@ -126,9 +128,9 @@ void unangOutput(str30 inputFilename, str30 outputFilename, graphType *graph)
     if (graph->nVertices > 0)
     {
         // if opening file and write mode is sucessful, program will proceed. Otherwise it will return an error message
-        if (fp = fopen(outputFilename, "w"))
+        if ((fp = fopen(outputFilename, "w")))
         {   
-            int i,k,flag;
+            int i,j,k,flag;
             str30 graphName;
             strcpy(graphName, inputFilename);
             
@@ -144,11 +146,35 @@ void unangOutput(str30 inputFilename, str30 outputFilename, graphType *graph)
                 }
             }
 
+            int sortedIndices[MAX_VERTICES];
+            for (i = 0; i < graph->nVertices; i++)
+            {
+                sortedIndices[i] = i; 
+            }
+
+            // Bubble sort the indices alphabetically
+            for (i = 0; i < graph->nVertices - 1; i++)
+            {
+                for (j = 0; j < graph->nVertices - i - 1; j++)
+                {
+                    int id1 = sortedIndices[j];
+                    int id2 = sortedIndices[j + 1];
+                    
+                    if (strcmp(graph->vertexNames[id1], graph->vertexNames[id2]) > 0)
+                    {
+                        int temp = sortedIndices[j];
+                        sortedIndices[j] = sortedIndices[j + 1];
+                        sortedIndices[j + 1] = temp;
+                    }
+                }
+            }
+
             //Prints Vertices
             fprintf(fp, "V(%s)={", graphName);
             for (i = 0; i < graph->nVertices; i++)
             {
-                fprintf(fp, "%s", graph->vertexNames[i]);
+                int origId = sortedIndices[i];
+                fprintf(fp, "%s", graph->vertexNames[origId]);
                 
                 // Only print a comma if it is NOT the last vertex in the array
                 if (i < graph->nVertices - 1)
@@ -172,26 +198,29 @@ void unangOutput(str30 inputFilename, str30 outputFilename, graphType *graph)
             }
 
             //Print edges
-            fprintf(fp, "E(%s)={ ", graphName);
+            fprintf(fp, "E(%s)={", graphName);
             int edgesPrinted = 0;
             
             for (int i = 0; i < graph->nVertices; i++)
             {
                 for (int j = i; j < graph->nVertices; j++)
                 {
-                    if (graph->matrix[i][j] == 1)
+                    int u = sortedIndices[i];
+                    int v = sortedIndices[j];
+
+                    if (graph->matrix[u][v] == 1)
                     {
-                        fprintf(fp, "(%s,%s)", graph->vertexNames[i], graph->vertexNames[j]);
+                        fprintf(fp, "(%s,%s)", graph->vertexNames[u], graph->vertexNames[v]);
                         edgesPrinted++;
                         
                         if (edgesPrinted < totalEdges)
                         {
-                            fprintf(fp, " , ");
+                            fprintf(fp, ",");
                         }
                     }
                 }
             }
-            fprintf(fp, " }\n");
+            fprintf(fp, "}\n");
 
             fclose(fp);
             printf("Successfully generated Output 1 in %s!\n", outputFilename);
@@ -221,7 +250,7 @@ void ikalawangOutput(str30 outputFilename, graphType *graph)
     if (graph->nVertices > 0)
     {
         // if opening file and write mode is sucessful, program will proceed. Otherwise it will return an error message
-        if (fp = fopen(outputFilename, "w"))
+        if ((fp = fopen(outputFilename, "w")))
         {
             int i, j;
             int sortedIndices[MAX_VERTICES];
@@ -293,27 +322,21 @@ void ikalawangOutput(str30 outputFilename, graphType *graph)
 void ikatlongOutput(str30 outputFilename, graphType *graph)
 {
     FILE *fp;
-    int i,j;
+    int i, j;
 
     if (graph->nVertices > 0)
     {
-        // if opening file and write mode is sucessful, program will proceed. Otherwise it will return an error message
-        if (fp = fopen(outputFilename, "w"))
+        if ((fp = fopen(outputFilename, "w")))
         {
             // Loop through vertices in their original input sequence
             for (i = 0; i < graph->nVertices; i++)
             {
-                // Print main vertex and the first arrow thingy
                 fprintf(fp, "%s->", graph->vertexNames[i]);
 
-                // Scan entire row for any connections
-                for (j = 0; j < graph->nVertices; j++)
+                // Scan the raw sequence array instead of the 1s and 0s in the matrix
+                for (j = 0; j < graph->adjCount[i]; j++)
                 {
-                    if (graph->matrix[i][j] == 1)
-                    {
-                        // Print adjacent vertex and respective arrow thingy
-                        fprintf(fp, "%s->", graph->vertexNames[j]);
-                    }
+                    fprintf(fp, "%s->", graph->rawAdjList[i][j]);
                 }
 
                 // Print the NULL pointer representation at the end of the list
@@ -344,10 +367,10 @@ void ikaapatNaOutput(str30 outputFilename, graphType *graph)
     FILE *fp;
     int i,j;
 
-    if (graph->nVertices > 0)
+    if ((graph->nVertices > 0))
     {
         // if opening file and write mode is sucessful, program will proceed. Otherwise it will return an error message
-        if (fp = fopen(outputFilename, "w"))
+        if ((fp = fopen(outputFilename, "w")))
         {
             // For corner space
             fprintf(fp, "        "); 

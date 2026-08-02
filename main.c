@@ -26,12 +26,11 @@ int main()
 {
     FILE *fp;
     graphType graph;
-    list result;
     str30 input;
 
     printf("Input filename: ");
     scanf("%s", input);
-    if (fp = fopen(input, "r")) // opens and reads the file with the matching name inputted
+    if ((fp = fopen(input, "r"))) // opens and reads the file with the matching name inputted
     {
         fclose(fp);
         kuninInput(input, &graph); // verifies the input
