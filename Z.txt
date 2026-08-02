@@ -3,9 +3,9 @@ Hhh Aaa Fff Ggg Jjj -1
 Fff Ggg Hhh -1
 Ggg Ccc Eee Fff Hhh -1
 Eee Aaa Ddd Ggg -1
-Ddd Eee Jjj -1
+Ddd Eee Jjj Ooo -1
 Ccc Bbb Ggg Jjj -1
 Bbb Aaa Ccc Jjj -1 
 Aaa Bbb Eee Hhh Jjj -1
 Ooo Jjj Ddd -1
-Jjj Aaa Ccc Ooo Bbb -1
+Jjj Aaa Ccc Ooo Bbb Hhh Ddd -1
