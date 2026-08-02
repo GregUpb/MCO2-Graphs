@@ -1,0 +1,2 @@
+V(Z)={Aaa,Bbb,Ccc,Ddd,Eee,Fff,Ggg,Hhh,Jjj,Ooo}
+E(Z)={(Aaa,Bbb),(Aaa,Eee),(Aaa,Hhh),(Aaa,Jjj),(Bbb,Ccc),(Bbb,Jjj),(Ccc,Ggg),(Ccc,Jjj),(Ddd,Eee),(Ddd,Jjj),(Ddd,Ooo),(Eee,Ggg),(Fff,Ggg),(Fff,Hhh),(Ggg,Hhh),(Hhh,Jjj),(Jjj,Ooo)}

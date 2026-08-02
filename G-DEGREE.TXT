@@ -1,4 +1,5 @@
-Bruce 1
+Barry 3
+Bruce 2
 Clark 2
-Diana 3
-Hal 2
+Diana 4
+Hal 1

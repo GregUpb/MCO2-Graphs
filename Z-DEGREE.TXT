@@ -1,0 +1,10 @@
+Aaa 4
+Bbb 3
+Ccc 3
+Ddd 3
+Eee 3
+Fff 2
+Ggg 4
+Hhh 4
+Jjj 6
+Ooo 2

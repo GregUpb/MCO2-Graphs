@@ -1,4 +1,5 @@
-Diana->Hal->Bruce->Clark->\
-Bruce->Diana->\
-Hal->Clark->Diana->\
-Clark->Hal->Diana->\
+Barry->Clark->Bruce->Diana->\
+Hal->Diana->\
+Bruce->Diana->Barry->\
+Diana->Hal->Clark->Bruce->Barry->\
+Clark->Diana->Barry->\

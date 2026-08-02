@@ -1,0 +1,10 @@
+Hhh->Aaa->Fff->Ggg->Jjj->\
+Fff->Ggg->Hhh->\
+Ggg->Ccc->Eee->Fff->Hhh->\
+Eee->Aaa->Ddd->Ggg->\
+Ddd->Eee->Jjj->\
+Ccc->Bbb->Ggg->Jjj->\
+Bbb->Aaa->Ccc->Jjj->\
+Aaa->Bbb->Eee->Hhh->Jjj->\
+Ooo->Jjj->Ddd->\
+Jjj->Aaa->Ccc->Ooo->Bbb->\
